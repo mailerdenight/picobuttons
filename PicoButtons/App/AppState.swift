@@ -107,5 +107,5 @@ final class AppState {
 
 enum PurchaseConfiguration {
     /// Create this non-consumable product in App Store Connect before release.
-    static let proProductID = "com.atsushichiba.picobuttons.pro"
+    static let proProductID = "com.ac.picobuttons.pro"
 }

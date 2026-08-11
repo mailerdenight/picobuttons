@@ -18,4 +18,4 @@ Play 28 original retro electronic sounds on a four-by-seven button board. Pico B
 - Publish a reachable privacy-policy URL before review and replace the placeholder URL in `SettingsView`.
 - In App Store Connect, declare data collection based on the final AdMob/UMP SDK configuration and current vendor documentation.
 - Replace the sample AdMob app ID, banner unit ID, and interstitial unit ID with the IDs issued for this app. Never release using Google test IDs.
-- Create the non-consumable `com.atsushichiba.picobuttons.pro` product in App Store Connect, configure its price, and submit it with the app.
+- Create the non-consumable `com.ac.picobuttons.pro` product in App Store Connect, configure its price, and submit it with the app.

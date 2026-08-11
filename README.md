@@ -8,4 +8,4 @@ iOS 17+向けの多言語レトロ電子音玩具。28種類のオリジナル�
 
 AdMobリクエストは子供向け年齢処理、一般向けコンテンツ評価、非パーソナライズを有効にします。公開前にAdMob管理画面とApp Store Connectの年齢レーティング・プライバシー回答も、この子供利用前提の運用に合わせて確認してください。テスト用のApp ID／広告ユニットID／プライバシーポリシーURLを本番値へ置き換えるまでは公開できません。
 
-買い切りの `Pico Buttons Pro`（non-consumable、ID: `com.atsushichiba.picobuttons.pro`）はすべての広告を外し、追加サウンド、お気に入り、連打モード、タイマー停止、音量制限、親モードを提供する設計です。購入・復元はStoreKit 2で接続済みです。各Pro機能のUI本体は今後追加します。
+買い切りの `Pico Buttons Pro`（non-consumable、ID: `com.ac.picobuttons.pro`）はすべての広告を外し、追加サウンド、お気に入り、連打モード、タイマー停止、音量制限、親モードを提供する設計です。購入・復元はStoreKit 2で接続済みです。各Pro機能のUI本体は今後追加します。

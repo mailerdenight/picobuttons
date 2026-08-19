@@ -8,6 +8,7 @@ struct PicoButtonsApp: App {
         WindowGroup {
             AppRootView()
                 .environment(appState)
+                .task { await appState.observeTransactions() }
         }
     }
 }

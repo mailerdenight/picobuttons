@@ -34,6 +34,7 @@
 "Privacy" = "プライバシー";
 "Privacy Policy" = "プライバシーポリシー";
 "Privacy choices" = "プライバシー設定";
+"Report an inappropriate ad" = "不適切な広告を報告";
 "Attack" = "アタック";
 "Alert" = "アラート";
 "Signal" = "シグナル";
@@ -105,3 +106,15 @@
 "SOUND_HEART" = "心臓";
 "SOUND_BLESSING" = "祝福";
 "SOUND_ECG" = "心電図";
+"Pico Buttons Pro" = "ピコボタン Pro";
+"Pro is active — ads are removed." = "Proが有効です。広告は表示されません。";
+"A one-time Pro purchase removes every ad." = "1回のPro購入ですべての広告を非表示にできます。";
+"Make a one-time purchase to enjoy Pico Buttons without ads." = "1回の購入で、広告なしのピコボタンを楽しめます。";
+"Purchasing…" = "購入中…";
+"Get Pico Buttons Pro" = "ピコボタン Proを購入";
+"Restore purchases" = "購入を復元";
+"Pro is not available right now. Please try again later." = "Proは現在利用できません。しばらくしてからもう一度お試しください。";
+"We couldn't verify this purchase. Please try again." = "この購入を確認できませんでした。もう一度お試しください。";
+"Your purchase is waiting for approval." = "購入は承認待ちです。";
+"Purchase couldn't be completed. Please try again." = "購入を完了できませんでした。もう一度お試しください。";
+"Purchases couldn't be restored. Please try again." = "購入を復元できませんでした。もう一度お試しください。";

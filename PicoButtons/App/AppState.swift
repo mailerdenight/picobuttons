@@ -28,6 +28,7 @@ final class AppState {
     var isPro = false
     var proProduct: Product?
     var isProPurchaseInProgress = false
+    var proPurchaseError: String?
 
     let playback = PlaybackService()
     let ads: AdService
@@ -40,7 +41,14 @@ final class AppState {
     var adsEnabled: Bool { !isPro }
 
     func loadProEntitlement() async {
-        proProduct = try? await Product.products(for: [PurchaseConfiguration.proProductID]).first
+        do {
+            proProduct = try await Product.products(for: [PurchaseConfiguration.proProductID]).first
+            if proProduct == nil {
+                proPurchaseError = String(localized: "Pro is not available right now. Please try again later.")
+            }
+        } catch {
+            proPurchaseError = String(localized: "Pro is not available right now. Please try again later.")
+        }
         await refreshProEntitlement()
     }
 
@@ -48,15 +56,43 @@ final class AppState {
         guard let proProduct, !isProPurchaseInProgress else { return }
         isProPurchaseInProgress = true
         defer { isProPurchaseInProgress = false }
-        guard case .success(let result) = try? await proProduct.purchase(),
-              case .verified(let transaction) = result else { return }
-        isPro = true
-        await transaction.finish()
+        do {
+            let result = try await proProduct.purchase()
+            switch result {
+            case .success(.verified(let transaction)):
+                isPro = true
+                await transaction.finish()
+            case .success(.unverified):
+                proPurchaseError = String(localized: "We couldn't verify this purchase. Please try again.")
+            case .pending:
+                proPurchaseError = String(localized: "Your purchase is waiting for approval.")
+            case .userCancelled:
+                break
+            @unknown default:
+                break
+            }
+        } catch {
+            proPurchaseError = String(localized: "Purchase couldn't be completed. Please try again.")
+        }
     }
 
     func restoreProPurchases() async {
-        try? await AppStore.sync()
+        do {
+            try await AppStore.sync()
+        } catch {
+            proPurchaseError = String(localized: "Purchases couldn't be restored. Please try again.")
+        }
         await refreshProEntitlement()
+    }
+
+    func observeTransactions() async {
+        for await result in Transaction.updates {
+            guard case .verified(let transaction) = result else { continue }
+            if transaction.productID == PurchaseConfiguration.proProductID {
+                await refreshProEntitlement()
+            }
+            await transaction.finish()
+        }
     }
 
     func play(_ sound: Sound) {

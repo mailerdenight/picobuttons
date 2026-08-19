@@ -1,0 +1,60 @@
+{
+  "identifier" : "B19A1A54-7CE9-4D03-9CFC-3AA3682B100B",
+  "nonRenewingSubscriptionGroups" : [ ],
+  "products" : [
+    {
+      "displayPrice" : "¥100",
+      "familyShareable" : false,
+      "internalID" : "5E8749F4-9FCF-47D5-98A7-76D1F66A6538",
+      "localizations" : [
+        {
+          "description" : "すべての広告を非表示にします。",
+          "displayName" : "Pico Buttons Pro",
+          "locale" : "ja"
+        },
+        {
+          "description" : "Removes every ad from Pico Buttons.",
+          "displayName" : "Pico Buttons Pro",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.ac.picobuttons.pro",
+      "referenceName" : "Pico Buttons Pro",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "",
+    "_developerTeamID" : "",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 0,
+    "_storefront" : "JPN",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      }
+    ]
+  },
+  "subscriptionGroups" : [ ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

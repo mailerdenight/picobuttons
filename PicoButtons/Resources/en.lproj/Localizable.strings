@@ -34,6 +34,7 @@
 "Privacy" = "Privacy";
 "Privacy Policy" = "Privacy Policy";
 "Privacy choices" = "Privacy choices";
+"Report an inappropriate ad" = "Report an inappropriate ad";
 "Attack" = "Attack";
 "Alert" = "Alert";
 "Signal" = "Signal";
@@ -105,3 +106,15 @@
 "SOUND_HEART" = "HEART";
 "SOUND_BLESSING" = "BLESSING";
 "SOUND_ECG" = "ECG";
+"Pico Buttons Pro" = "Pico Buttons Pro";
+"Pro is active — ads are removed." = "Pro is active — ads are removed.";
+"A one-time Pro purchase removes every ad." = "A one-time Pro purchase removes every ad.";
+"Make a one-time purchase to enjoy Pico Buttons without ads." = "Make a one-time purchase to enjoy Pico Buttons without ads.";
+"Purchasing…" = "Purchasing…";
+"Get Pico Buttons Pro" = "Get Pico Buttons Pro";
+"Restore purchases" = "Restore purchases";
+"Pro is not available right now. Please try again later." = "Pro is not available right now. Please try again later.";
+"We couldn't verify this purchase. Please try again." = "We couldn't verify this purchase. Please try again.";
+"Your purchase is waiting for approval." = "Your purchase is waiting for approval.";
+"Purchase couldn't be completed. Please try again." = "Purchase couldn't be completed. Please try again.";
+"Purchases couldn't be restored. Please try again." = "Purchases couldn't be restored. Please try again.";

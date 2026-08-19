@@ -141,7 +141,7 @@ final class GoogleAdService: AdService {
 #endif
 
 enum AdConfiguration {
-    /// Google test IDs only. Replace both IDs from AdMob before submitting the app.
-    static let bannerUnitID = "ca-app-pub-3940256099942544/2934735716"
-    static let interstitialUnitID = "ca-app-pub-3940256099942544/4411468910"
+    /// AdMob production unit IDs for the banner and interstitial placements.
+    static let bannerUnitID = "ca-app-pub-4184859148180641/3112834751"
+    static let interstitialUnitID = "ca-app-pub-4184859148180641/3340170666"
 }

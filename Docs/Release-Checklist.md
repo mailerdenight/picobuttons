@@ -1,12 +1,14 @@
 # Pico Buttons リリース準備チェックリスト
 
-更新日: 2026-08-11 / 対象バージョン: 1.0 (build 1)
+更新日: 2026-10-06 / 初回チェック対象: 1.0 (build 1)
 
 ## 提出を止める項目
 
-- [ ] **AdMob本番値**: `Info.plist` の `GADApplicationIdentifier` と `AdConfiguration` のバナー／インタースティシャルIDはGoogle公式テストIDです。AdMobで本アプリを作成し、3つすべてを本番IDへ置換するまで提出しないこと。
-- [ ] **プライバシーポリシー**: 設定画面の `https://example.com/privacy` を、公開済みで実際の広告SDK・購入・問い合わせのデータ取扱いを説明するHTTPS URLへ置換すること。App Store Connectにも同じURLを登録すること。
-- [ ] **Proの提供内容**: 現在はStoreKit 2による買い切り購入・復元と広告非表示だけが動作する。告知している「追加サウンド、お気に入り、連打モード、タイマー停止、音量制限、親モード」は未実装であり、実装・検証前に販売／告知しないこと。
+- [x] **AdMobのコード設定**: `PicoButtons/Resources/Info.plist` の `GADApplicationIdentifier` と `AdConfiguration` のバナー／インタースティシャルIDは本番用IDへ置換済み。
+- [ ] **AdMob管理画面**: 上記IDが本アプリに対応し、広告配信設定が有効であることを管理画面と実機で確認すること。
+- [x] **プライバシーポリシーのコード設定**: 設定画面に `https://mailerdenight.github.io/pico-buttons-privacy/` を設定済み。
+- [ ] **プライバシーポリシーの公開確認**: 公開ページを確認し、App Store Connectにも同じURLを登録すること。
+- [ ] **Proの提供内容**: 現在はStoreKit 2による買い切り購入・復元と広告非表示だけが動作する。「追加サウンド、お気に入り、連打モード、タイマー停止、音量制限、親モード」はPro機能として実装されていないため、実装・検証前に販売／告知しないこと。
 - [ ] **App Store Connectの商品**: non-consumable `com.ac.picobuttons.pro` を作成し、価格、審査用スクリーンショット、ローカライズされた表示名・説明を登録すること。Sandbox購入と復元を実機で確認すること。
 
 ## AdMob と子供利用への対応

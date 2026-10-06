@@ -4,6 +4,7 @@ struct AppRootView: View {
     @Environment(AppState.self) private var state
     @State private var isShowingSettings = false
     @State private var isShowingLibrary = false
+    @State private var isAdsReady = false
 
     var body: some View {
         NavigationStack {
@@ -18,7 +19,7 @@ struct AppRootView: View {
                 }
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
-            if state.adsEnabled { BannerAdView().frame(height: 50) }
+            if state.adsEnabled && isAdsReady { BannerAdView().frame(height: 50) }
         }
         .sheet(isPresented: $isShowingLibrary) { NavigationStack { LibraryView() } }
         .sheet(isPresented: $isShowingSettings, onDismiss: { state.considerAdBreak(.settingsClosed) }) { NavigationStack { SettingsView() } }
@@ -27,8 +28,9 @@ struct AppRootView: View {
         }
         .preferredColorScheme(.dark)
         .task {
+            isAdsReady = false
             await state.loadProEntitlement()
-            if state.adsEnabled { await state.ads.start() }
+            if state.adsEnabled { isAdsReady = await state.ads.start() }
         }
     }
 }

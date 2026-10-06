@@ -56,7 +56,8 @@ final class InterstitialPolicy {
 
 @MainActor
 protocol AdService: AnyObject {
-    func start() async
+    /// Returns true only after consent permits requests and ad configuration/SDK startup complete.
+    func start() async -> Bool
     func recordSoundTap()
     func presentInterstitialIfEligible(for breakPoint: AdBreak, isAudioPlaying: Bool, from viewController: UIViewController?)
     func presentPrivacyOptions() async
@@ -73,10 +74,10 @@ final class GoogleAdService: NSObject, AdService, FullScreenContentDelegate {
     private var interstitial: InterstitialAd?
     private var started = false
 
-    func start() async {
-        guard !started else { return }
+    func start() async -> Bool {
+        guard !started else { return ConsentInformation.shared.canRequestAds }
         await requestConsentIfNeeded()
-        guard ConsentInformation.shared.canRequestAds else { return }
+        guard ConsentInformation.shared.canRequestAds else { return false }
 
         let configuration = MobileAds.shared.requestConfiguration
         // Google Mobile Ads 12 uses this COPPA-compatible setting. Move to
@@ -87,6 +88,7 @@ final class GoogleAdService: NSObject, AdService, FullScreenContentDelegate {
         await MobileAds.shared.start()
         started = true
         await loadInterstitial()
+        return true
     }
 
     func recordSoundTap() {
@@ -133,7 +135,7 @@ final class GoogleAdService: NSObject, AdService, FullScreenContentDelegate {
 /// Lets the app compile and run without advertising SDK packages.
 @MainActor
 final class GoogleAdService: AdService {
-    func start() async { }
+    func start() async -> Bool { false }
     func recordSoundTap() { }
     func presentInterstitialIfEligible(for breakPoint: AdBreak, isAudioPlaying: Bool, from viewController: UIViewController?) { }
     func presentPrivacyOptions() async { }

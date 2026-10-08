@@ -26,6 +26,9 @@ final class PlaybackService: NSObject, AVAudioPlayerDelegate {
             return
         }
 
+        // Replace only the loop; one-shot voices may continue playing.
+        if repeating { stopAllLoops() }
+
         player.stop()
         player.currentTime = 0
         player.numberOfLoops = repeating ? -1 : 0
@@ -100,9 +103,14 @@ final class PlaybackService: NSObject, AVAudioPlayerDelegate {
     }
 
     private func finishPlayback(for playerID: ObjectIdentifier) {
-        guard let soundID = soundIDsByPlayer[playerID] else { return }
+        guard let soundID = soundIDsByPlayer[playerID],
+              let loopPlayer = players[soundID]?.first else { return }
         refreshActiveSoundIDs()
-        loopingSoundIDs.remove(soundID)
+        // One-shot completions (including queued callbacks from a reused voice)
+        // must not clear a loop that is still playing.
+        if ObjectIdentifier(loopPlayer) == playerID, !loopPlayer.isPlaying {
+            loopingSoundIDs.remove(soundID)
+        }
     }
 
     private func refreshActiveSoundIDs() {

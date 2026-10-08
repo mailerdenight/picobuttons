@@ -1,0 +1,25 @@
+name: Playback regression
+
+on:
+  pull_request:
+    paths:
+      - 'PicoButtons/Services/PlaybackService.swift'
+      - 'PicoButtons/Models/Sound.swift'
+      - 'Tests/PlaybackRegression/**'
+      - 'Scripts/test_playback_regression.py'
+      - '.github/workflows/playback-regression.yml'
+  push:
+    paths:
+      - 'PicoButtons/Services/PlaybackService.swift'
+      - 'PicoButtons/Models/Sound.swift'
+      - 'Tests/PlaybackRegression/**'
+      - 'Scripts/test_playback_regression.py'
+      - '.github/workflows/playback-regression.yml'
+
+jobs:
+  playback:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test production playback logic with deterministic audio doubles
+        run: python3 Scripts/test_playback_regression.py
